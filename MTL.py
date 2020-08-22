@@ -76,7 +76,7 @@ g.close()
 
 counter = 0                                      #Number of unique tokens in a merge set of all data
 Full_Dict = {}                              
-with open("Davidson_Final.txt","r") as a: 
+with open("D1.txt","r") as a: 
 	for line in a:
 		#print line
 		line = line.lower()
@@ -91,7 +91,7 @@ voc_1 = len(Full_Dict)
 
 
 #Tokenize and padding the sequences for Data 1
-with open("Davidson_Final.txt","r")as a:
+with open("D1.txt","r")as a:
 	texts_1 = a.readlines()
 #print texts_1
 tokenizer_1 = Tokenizer(Num_Words)
@@ -136,7 +136,7 @@ concatenated_embedding_matrix_1 = np.hstack((embeddings_matrix_1,Embedding_Matri
 
 
 flag = counter   #The count of unique tokens is assigned to "flag" variable
-with open("R_S_N_Final.txt","r") as b:
+with open("D2.txt","r") as b:
 	for line in b:
 		line = line.lower()
 		line = line.split()
@@ -148,7 +148,7 @@ with open("R_S_N_Final.txt","r") as b:
 				
 
 #Tokenize and padding the sequences for Data 2
-with open("R_S_N_Final.txt","r")as b:
+with open("D2.txt","r")as b:
 	texts_2 = b.readlines()
 tokenizer_2 = Tokenizer(Num_Words)
 tokenizer_2.fit_on_texts(texts_2)
@@ -188,7 +188,7 @@ concatenated_embedding_matrix_2 = np.hstack((embeddings_matrix_2,Embedding_Matri
 
 #The count of unique tokens is assigned to "Count" variable
 Count = flag
-with open("Coling_Final.txt","r") as c:
+with open("D3.txt","r") as c:
 	for line in c:
 		line = line.lower()
 		line = line.split()
@@ -197,7 +197,7 @@ with open("Coling_Final.txt","r") as c:
 				Full_Dict[item] = Count
 				Count +=1
 #Tokenize and padding the sequences for Data 3
-with open("Coling_Final.txt","r")as c:
+with open("D3.txt","r")as c:
 	texts_3 = c.readlines()
 tokenizer_3 = Tokenizer(Num_Words)
 tokenizer_3.fit_on_texts(texts_3)
@@ -238,7 +238,7 @@ concatenated_embedding_matrix_3 = np.hstack((embeddings_matrix_3,Embedding_Matri
 
 #The count of unique tokens is assigned to "timer" variable
 timer = Count
-with open("Offensive_not_offensive.txt","r") as d:
+with open("D4.txt","r") as d:
 	for line in d:
 		line = line.lower()
 		line = line.split()
@@ -250,7 +250,7 @@ with open("Offensive_not_offensive.txt","r") as d:
 
 
 ##Tokenize and padding the sequences for Data 4
-with open("Offensive_not_offensive.txt","r")as d:
+with open("D4.txt","r")as d:
 	texts_4 = d.readlines()
 tokenizer_4 = Tokenizer(Num_Words)
 tokenizer_4.fit_on_texts(texts_4)
@@ -292,7 +292,7 @@ concatenated_embedding_matrix_4 = np.hstack((embeddings_matrix_4,Embedding_Matri
 
 ##Tokenize and padding the sequences for Data 5
 number = timer
-with open("harassment_final.txt","r") as e:
+with open("D5.txt","r") as e:
 	for line in e:
 		line = line.lower()
 		line = line.split()
@@ -307,7 +307,7 @@ print"The total element in Full_Dict is",len(Full_Dict)
 
 
 ##Tokenize and padding the sequences for Data 5
-with open("harassment_final.txt","r")as e:
+with open("D5.txt","r")as e:
 	texts_5 = e.readlines()
 tokenizer_5 = Tokenizer(Num_Words)
 tokenizer_5.fit_on_texts(texts_5)
@@ -444,7 +444,7 @@ concatenated_embedding_matrix = np.hstack((Embedding_Matrix,Embedding_Matrix_Fas
 #This data will be used to chunk data as a batch size of 30 to train in shared space
 count_1 = 1
 Sequences_1 = []
-with open("Davidson_Final.txt","r") as d:
+with open("D1.txt","r") as d:
 	for line in d:
 		line = line.lower()
 		line = line.split()
@@ -461,7 +461,7 @@ data_1 = pad_sequences(Sequences_1, maxlen = Max_length, padding = 'post')
 #This data will be used to chunk data as a batch size of 30 to train in shared space
 count_2 = 1
 Sequences_2 = []
-with open("R_S_N_Final.txt") as e:
+with open("D2.txt") as e:
 	for line in e:
 		line = line.lower()
 		line = line.split()
@@ -479,7 +479,7 @@ data_2 = pad_sequences(Sequences_2, maxlen = Max_length, padding = 'post')
 #This data will be used to chunk data as a batch size of 30 to train in shared space
 count_3 = 1
 Sequences_3 = []
-with open("Coling_Final.txt","r")as f:
+with open("D3.txt","r")as f:
 	for line in f:
 		line = line.lower()
 		line = line.split()
@@ -496,7 +496,7 @@ data_3 = pad_sequences(Sequences_3, maxlen = Max_length, padding = 'post')
 #This data will be used to chunk data as a batch size of 30 to train in shared space
 count_4 = 1
 Sequences_4 = []
-with open("Offensive_not_offensive.txt","r") as g:
+with open("D4.txt","r") as g:
 	for line in g:
 		line = line.lower()
 		line = line.split()
@@ -513,7 +513,7 @@ data_4 = pad_sequences(Sequences_4, maxlen = Max_length, padding = 'post')
 #This data will be used to chunk data as a batch size of 30 to train in shared space
 count_5 = 1
 Sequences_5 = []
-with open("harassment_final.txt","r") as h:
+with open("D5.txt","r") as h:
 	for line in h:
 		line = line.lower()
 		line = line.split()
@@ -564,30 +564,30 @@ Steps = (int(max(Steps_1,Steps_2,Steps_3, Steps_4,Steps_5)))*3
 
 
 #Class of Data 1 is converted to one hot encoding
-Labels_1 = pd.read_csv("davidson_class.csv")
+Labels_1 = pd.read_csv("Data_1_class.csv")
 Labels_1 = Labels_1['class'].values
 Labels_one_hot_1 = np_utils.to_categorical(Labels_1)
 
 
 #Class of Data 2 is converted to  one hot encoding
-Labels_2 = pd.read_csv("R_S_N.csv")
+Labels_2 = pd.read_csv("Data_2_class.csv")
 Labels_2 = Labels_2['class'].values
 Labels_one_hot_2 = np_utils.to_categorical(Labels_2)
 
 #Class of Data 3 is converted to  one hot encoding
-Labels_3 = pd.read_csv("coling.csv")
+Labels_3 = pd.read_csv("Data_3_class.csv")
 Labels_3 = Labels_3['class'].values
 Labels_one_hot_3 = np_utils.to_categorical(Labels_3)
 
 
 #Class of Data 4 is converted to  one hot encoding
-Labels_4 = pd.read_csv("Offensive_not_offensive.csv")
+Labels_4 = pd.read_csv("Data_4_class.csv")
 Labels_4 = Labels_4['class'].values
 Labels_one_hot_4 = np_utils.to_categorical(Labels_4)
 
 
 #Class of Data 5 is converted to one hot encoding
-Labels_5 = pd.read_csv("Harassment_class.csv")
+Labels_5 = pd.read_csv("Data_5_class.csv")
 Labels_5 = Labels_5['class'].values
 Labels_one_hot_5 = np_utils.to_categorical(Labels_5)
 
@@ -615,7 +615,7 @@ Model_1.compile(loss = 'categorical_crossentropy',optimizer = 'adam',metrics = [
 
 
 # 5 classification tasks are trained jointly to capture task specific features. The batch size of 30 is utilized and last chunk may contain a size of 29 tweets. If 2 tasks are trained then\
-# uncomment the line from 482-491. For 3 tasks uncomment the line from 493-504. For 4 tasks uncomment line 506-522
+# uncomment the line from 348-357. For 3 tasks uncomment the line from 359-370. For 4 tasks uncomment line 372-388.
 for i in range(0, Steps):
 	X = Data_1[i%len(Data_1)]    #Data 1
 	Y = Data_2[i%len(Data_2)]    #Data 2
