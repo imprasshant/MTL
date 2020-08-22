@@ -290,7 +290,7 @@ concatenated_embedding_matrix_4 = np.hstack((embeddings_matrix_4,Embedding_Matri
 
 
 
-##Tokenize and padding the sequences for Data 5
+#The count of unique tokens from the 4 data is assigned to "number" variable
 number = timer
 with open("D5.txt","r") as e:
 	for line in e:
@@ -301,7 +301,7 @@ with open("D5.txt","r") as e:
 				Full_Dict[item] = number
 				number +=1
 
-Total = number + 1
+Total = number + 1.       #This is the total number of unique tokens in the merged data
 print "the value of Total unique tokens in all the data is",Total
 print"The total element in Full_Dict is",len(Full_Dict)
 
