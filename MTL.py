@@ -709,7 +709,8 @@ for train,test in kfold.split(data1, Labels_1):
 	filepath="T1.hdf5"
 	checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	callbacks_list = [checkpoint]
-	model_task_1.fit(data1[train], Labels_one_hot_1[train],validation_data = (data1[test],Labels_one_hot_1[test]),callbacks=callbacks_list,epochs=3, 		batch_size=16, verbose=2)
+	model_task_1.fit(data1[train], Labels_one_hot_1[train],validation_data = (data1[test],Labels_one_hot_1[test]),callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
+	#model_task_1.fit(data1[train], Labels_one_hot_1[train],validation_split = 0.1,callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
 	model_task_1.save("T1.hdf5")
 	model_task_1 = load_model("T1.hdf5")
 	scores = model_task_1.evaluate(data1[test], Labels_one_hot_1[test],batch_size=16)
@@ -804,7 +805,8 @@ for train,test in kfold.split(data2, Labels_2):
 	filepath="T2.hdf5"
 	checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	callbacks_list = [checkpoint]
-	model_task_2.fit(data2[train], Labels_one_hot_2[train],validation_data = (data2[test],Labels_one_hot_2[test]),callbacks=callbacks_list,epochs=3, 		batch_size=16, verbose=2)
+	model_task_2.fit(data2[train], Labels_one_hot_2[train],validation_data = (data2[test],Labels_one_hot_2[test]),callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
+	#model_task_2.fit(data2[train], Labels_one_hot_2[train],validation_split = 0.1,callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
 	model_task_2.save("T2.hdf5")
 	model_task_2 = load_model("T2.hdf5")
 	scores = model_task_2.evaluate(data2[test], Labels_one_hot_2[test],batch_size=16)
@@ -901,6 +903,7 @@ for train,test in kfold.split(data3, Labels_3):
 	checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	callbacks_list = [checkpoint]
 	model_task_3.fit(data3[train], Labels_one_hot_3[train],validation_data = (data3[test],Labels_one_hot_3[test]),callbacks=callbacks_list,epochs=3, 		batch_size=16, verbose=2)
+	#model_task_3.fit(data3[train], Labels_one_hot_3[train],validation_split = 0.1,callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
 	model_task_3.save("T3.hdf5")
 	model_task_3 = load_model("T3.hdf5")
 	scores = model_task_3.evaluate(data3[test], Labels_one_hot_3[test],batch_size=16)
@@ -995,6 +998,7 @@ for train,test in kfold.split(data4, Labels_4):
 	checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	callbacks_list = [checkpoint]
 	model_task_4.fit(data4[train], Labels_one_hot_4[train],validation_data = (data4[test],Labels_one_hot_4[test]),callbacks=callbacks_list,epochs=3, 		batch_size=16, verbose=2)
+	#model_task_4.fit(data4[train], Labels_one_hot_4[train],validation_split = 0.1,callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
 	model_task_4.save("T4.hdf5")
 	model_task_4 = load_model("T4.hdf5")
 	scores = model_task_4.evaluate(data4[test], Labels_one_hot_4[test],batch_size=16)
@@ -1078,6 +1082,7 @@ for train,test in kfold.split(data5, Labels_5):
 	checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	callbacks_list = [checkpoint]
 	model_task_5.fit(data5[train], Labels_one_hot_5[train],validation_data = (data5[test],Labels_one_hot_5[test]),callbacks=callbacks_list,epochs=3, 		batch_size=16, verbose=2)
+	#model_task_5.fit(data5[train], Labels_one_hot_5[train],validation_split = 0.1,callbacks=callbacks_list,epochs=3, batch_size=16, verbose=2)
 	model_task_5.save("T5.hdf5")
 	model_task_5 = load_model("T5.hdf5")
 	scores = model_task_5.evaluate(data5[test], Labels_one_hot_5[test],batch_size=16)
